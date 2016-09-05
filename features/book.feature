@@ -2,6 +2,12 @@ Feature: Create book form
 Input data to form
 click submit button
 
+Scenario: Create a new book without empty inputs
+  Given I am on "/books/new"
+  When I press "Create Book"
+  Then I should see "Author can't be blank"
+  Then I should see "Name can't be blank"
+
 Scenario: Create a new book with empty author
   Given I am on "/books/new"
   When I fill in "book[name]" with "Gone with the wind"
