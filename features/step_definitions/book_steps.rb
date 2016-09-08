@@ -11,5 +11,5 @@ When /^I press "([^\"]*)"$/ do |button|
 end
 
 Then /^I should see "([^\"]*)"$/ do |text|
-  page.has_content? text
+  assert page.has_content?(text)
 end
