@@ -49,6 +49,7 @@ test: &test
 #
 production:
   <<: *default
+  database: cucumber_rails5_production
 
 cucumber:
   <<: *test
