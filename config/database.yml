@@ -49,9 +49,6 @@ test: &test
 #
 production:
   <<: *default
-  database: cucumber_rails5_production
-  username: cucumber_rails5
-  password: <%= ENV['CUCUMBER_RAILS5_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
