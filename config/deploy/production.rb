@@ -4,6 +4,7 @@ username = ENV['PRODUCTION_USERNAME']
 servername = ENV['SERVER_NAME']
 
 set :branch, 'deploy'
+set :passenger_restart_with_touch, true
 role :app, %W{#{username}@#{servername}}
 role :web, %W{#{username}@#{servername}}
 role :db,  %W{#{username}@#{servername}}

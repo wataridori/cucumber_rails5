@@ -51,7 +51,7 @@ namespace :deploy do
   task :create_database do
     on roles(:db) do |host|
       within "#{release_path}" do
-        with rails_env: ENV["RAILS_ENV"] do
+        with rails_env: "production" do
           execute :rake, "db:create"
         end
       end
