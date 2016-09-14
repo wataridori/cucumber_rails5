@@ -56,7 +56,7 @@ namespace :deploy do
         end
       end
     end
-end
+  end
   before :migrate, :create_database
 
   desc "Restart application"
