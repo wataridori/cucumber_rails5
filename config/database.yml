@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  database: <%= ENV['DATABASE_DBNAME'] %>
+  database: <%= ENV['DATABASE_DB_NAME'] %>
   host: <%= ENV['DATABASE_HOSTNAME'] %>
 
 development:
@@ -28,7 +28,7 @@ test: &test
   <<: *default
   username: <%= ENV['DATABASE_USERNAME_TEST'] %>
   password: <%= ENV['DATABASE_PASSWORD_TEST'] %>
-  database: <%= ENV['DATABASE_DBNAME_TEST'] %>
+  database: <%= ENV['DATABASE_DB_NAME_TEST'] %>
   host: <%= ENV['DATABASE_HOSTNAME_TEST'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
