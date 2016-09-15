@@ -66,14 +66,6 @@ namespace :deploy do
   end
   before :migrate, :create_database
 
-  desc "link dotenv"
-  task :link_dotenv do
-    on roles(:app) do
-      execute "ln -s /home/deploy/.env #{release_path}/.env"
-    end
-  end
-  before :restart, :link_dotenv
-
   desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
