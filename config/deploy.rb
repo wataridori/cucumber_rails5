@@ -5,7 +5,7 @@ set :application, 'cucumber_rails5'
 set :repo_url, 'git@github.com:ducthien1490/cucumber_rails5.git'
 
 set :rvm_ruby_version, "2.3.1"
-set :deploy_to, "/usr/local/rails_apps/#{fetch :application}"
+set :deploy_to, "/home/deploy/rails_apps/#{fetch :application}"
 set :passenger_roles, :app
 set :passenger_restart_runner, :sequence
 set :passenger_restart_wait, 5
@@ -58,6 +58,14 @@ namespace :deploy do
     end
   end
   before :migrate, :create_database
+
+  desc "link dotenv"
+  task :link_dotenv do
+    on roles(:app) do
+      execute "ln -s /home/deploy/.env #{release_path}/.env"
+    end
+  end
+  before :restart, :link_dotenv
 
   desc "Restart application"
   task :restart do

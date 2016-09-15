@@ -12,7 +12,6 @@ role :db,  %W{#{username}@#{servername}}
 # Define server(s)
 server "#{servername}", user: "#{username}", roles: %w{web}
 
-
 # The server-based syntax can be used to override options:
 # ------------------------------------
 set :ssh_options, {
