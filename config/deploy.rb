@@ -46,6 +46,13 @@ set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+set :default_env, {
+  database_db_name: ENV["DATABASE_DB_NAME"],
+  database_hostname: ENV["DATABASE_HOSTNAME"],
+  database_username: ENV["DATABASE_USERNAME"],
+  database_password: ENV["DATABASE_PASSWORD"],
+}
+
 namespace :deploy do
   desc "create database"
   task :create_database do
