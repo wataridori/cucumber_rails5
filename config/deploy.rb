@@ -13,8 +13,7 @@ set :passenger_restart_limit, 2
 set :passenger_restart_with_sudo, false
 set :passenger_environment_variables, {}
 set :passenger_restart_command, "passenger-config restart-app"
-set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running" }
-
+set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running --rolling-restart" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
