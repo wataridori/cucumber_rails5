@@ -17,6 +17,7 @@ default: &default
   password: <%= ENV['DATABASE_PASSWORD'] %>
   database: <%= ENV['DATABASE_DB_NAME'] %>
   host: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: 3306
 
 development:
   <<: *default
