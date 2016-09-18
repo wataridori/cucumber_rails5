@@ -1,17 +1,36 @@
+build:
+  image: framgia/rails-workspace
+  commands:
+    - rake cucumber
+  environment:
+    DATABASE_USERNAME: test
+    DATABASE_PASSWORD: test
+    DATABASE_DB_NAME: demo
+    DATABASE_HOSTNAME: localhost
+
+compose:
+  database:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: demo
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: root
 deploy:
   capistrano:
-    image: framgia/rails
-    environment:
-      DATABASE_DB_NAME: cucumber_rails5_drone
-      PRODUCTION_USERNAME: deploy
-      SERVER_NAME: 45.32.28.225
+    image: fdplugins/capistrano
     when:
       branch: deploy
+    environment:
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root_pass
+      DATABASE_DB_NAME: cucumber_rails5
+      DATABASE_HOSTNAME: localhost
+      PRODUCTION_USERNAME: deploy
+      SERVER_NAME: 45.32.28.225
     commands:
-      - echo "DEPLOY"
-      - bundle
       - cap production deploy
 cache:
   mount:
     - .git
-    - vendor/cache
+    - vendor
