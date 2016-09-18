@@ -1,0 +1,20 @@
+deploy:
+  capistrano:
+    image: framgia/framgia-rails
+    environment:
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root_pass
+      DATABASE_DB_NAME: cucumber_rails5
+      DATABASE_HOSTNAME: localhost
+      PRODUCTION_USERNAME: deploy
+      SERVER_NAME: 45.32.28.225
+    when:
+      branch: deploy
+    commands:
+      - echo "DEPLOY"
+      - bundle
+      - cap production deploy
+cache:
+  mount:
+    - .git
+    - vendor/cache
