@@ -1,6 +1,6 @@
 deploy:
   capistrano:
-    image: framgia/framgia-rails
+    image: framgia/rails
     environment:
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: root_pass
