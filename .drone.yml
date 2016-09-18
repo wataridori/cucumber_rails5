@@ -4,6 +4,12 @@ deploy:
     when:
       branch: deploy
     commands:
+      - export DATABASE_USERNAME=root
+      - export DATABASE_PASSWORD=root_pass
+      - export DATABASE_DB_NAME=cucumber_rails5
+      - export DATABASE_HOSTNAME=localhost
+      - export PRODUCTION_USERNAME=deploy
+      - export SERVER_NAME=45.32.28.225
       - ssh-keyscan github.com >> ~/.ssh/known_hosts
       - cap production deploy
 cache:
