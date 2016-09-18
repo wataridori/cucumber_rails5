@@ -20,10 +20,10 @@ set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 
 set :default_env, {
-  database_db_name: ENV["DATABASE_DB_NAME"],
-  database_hostname: ENV["DATABASE_HOSTNAME"],
-  database_username: ENV["DATABASE_USERNAME"],
-  database_password: ENV["DATABASE_PASSWORD"],
+  database_db_name: "cucumber_rails5",
+  database_hostname: "localhost",
+  database_username: "root",
+  database_password: "root_pass",
 }
 
 namespace :deploy do

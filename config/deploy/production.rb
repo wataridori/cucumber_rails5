@@ -1,5 +1,5 @@
-username = ENV['PRODUCTION_USERNAME']
-servername = ENV['SERVER_NAME']
+username = "deploy"
+servername = "45.32.28.225"
 
 set :branch, 'deploy'
 set :passenger_restart_with_touch, true
