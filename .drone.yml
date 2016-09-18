@@ -1,6 +1,6 @@
 deploy:
   capistrano:
-    image: framgia/rails-workspace
+    image: framgia/rails
     environment:
       DATABASE_DB_NAME: cucumber_rails5_drone
       PRODUCTION_USERNAME: deploy
