@@ -2,14 +2,14 @@ build:
   image: framgia/rails-workspace
   commands:
     - bundle install
-    - rake db:create
-    - rake db:migrate
+    - RAILS_ENV=test rake db:create
+    - RAILS_ENV=test rake db:migrate
     - rake cucumber
   environment:
-    DATABASE_USERNAME: test
-    DATABASE_PASSWORD: test
-    DATABASE_DB_NAME: demo
-    DATABASE_HOSTNAME: 127.0.0.1
+    DATABASE_USERNAME_TEST: test
+    DATABASE_PASSWORD_TEST: test
+    DATABASE_DB_NAME_TEST: demo
+    DATABASE_HOSTNAME_TEST: 127.0.0.1
 
 compose:
   database:
