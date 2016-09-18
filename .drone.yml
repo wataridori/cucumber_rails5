@@ -9,7 +9,7 @@ build:
     DATABASE_USERNAME: test
     DATABASE_PASSWORD: test
     DATABASE_DB_NAME: demo
-    DATABASE_HOSTNAME: localhost
+    DATABASE_HOSTNAME: 127.0.0.1
 
 compose:
   database:
