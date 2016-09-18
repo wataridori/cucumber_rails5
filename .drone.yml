@@ -1,6 +1,9 @@
 build:
   image: framgia/rails-workspace
   commands:
+    - bundle install
+    - rake db:create
+    - rake db:migrate
     - rake cucumber
   environment:
     DATABASE_USERNAME: test
