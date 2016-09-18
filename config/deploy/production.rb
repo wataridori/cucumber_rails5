@@ -1,5 +1,3 @@
-require 'pry-rails'
-
 username = ENV['PRODUCTION_USERNAME']
 servername = ENV['SERVER_NAME']
 
