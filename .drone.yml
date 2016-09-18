@@ -1,11 +1,8 @@
 deploy:
   capistrano:
-    image: framgia/rails
+    image: framgia/rails-workspace
     environment:
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: root_pass
-      DATABASE_DB_NAME: cucumber_rails5
-      DATABASE_HOSTNAME: localhost
+      DATABASE_DB_NAME: cucumber_rails5_drone
       PRODUCTION_USERNAME: deploy
       SERVER_NAME: 45.32.28.225
     when:
