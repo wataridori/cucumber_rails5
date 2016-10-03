@@ -1,0 +1,69 @@
+version: '2'
+
+### Change the `project` with your own project name ###
+services:
+    application:
+        container_name: project_application
+        image: debian
+        volumes:
+            - ./:/home/app
+    workspace:
+        container_name: project_workspace
+        restart: always
+        image: framgia/rails-workspace
+        volumes_from:
+            - application
+            - logs
+        ports:
+            - 8080:80
+        environment:
+            DATABASE_HOSTNAME: mysql
+            DATABASE_DB_NAME: rails_db
+            DATABASE_USERNAME: root
+            DATABASE_PASSWORD: root
+            DATABASE_HOSTNAME_TEST: mysql_test
+            DATABASE_DB_NAME_TEST: rails_db_test
+            DATABASE_USERNAME_TEST: test
+            DATABASE_PASSWORD_TEST: test
+    mysql:
+        container_name: project_mysql
+        restart: always
+        image: mysql
+        volumes_from:
+            - data
+        expose:
+            - "3306"
+        environment:
+            MYSQL_DATABASE: rails_db
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+    mysql_test:
+        container_name: project_mysql_test
+        restart: always
+        image: mysql
+        volumes_from:
+            - data_test
+        expose:
+            - "3306"
+        environment:
+            MYSQL_DATABASE: rails_db_test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: root
+    data:
+        container_name: project_data
+        image: debian
+        volumes:
+            - .docker/mysql:/var/lib/mysql
+            - .docker/data:/data
+    data_test:
+        container_name: project_data_test
+        image: debian
+        volumes:
+            - .docker/mysql_test:/var/lib/mysql
+    logs:
+        container_name: project_logs
+        image: debian
+        volumes:
+            - .docker/logs/nginx:/var/log/nginx
