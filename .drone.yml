@@ -1,31 +1,25 @@
 build:
-   image: framgia/rails-workspace
-    commands:
-      - bundle install
-      - rake db:create
-      - rake db:migrate
-      - rake cucumber
-    environment:
-      DATABASE_USERNAME: test
-      DATABASE_PASSWORD: test
-      DATABASE_DB_NAME: demo
-      DATABASE_HOSTNAME: localhost
+  image: framgia/rails-workspace
+  environment:
+    DATABASE_USERNAME_TEST: test
+    DATABASE_PASSWORD_TEST: test
+    DATABASE_DB_NAME_TEST: demo
+    DATABASE_HOSTNAME_TEST: 127.0.0.1
+  commands:
+    - bundle install
+    - sleep 30
+    - RAILS_ENV=test rake db:create
+    - RAILS_ENV=test rake db:migrate
+    - rake cucumber
 
- compose:
-   database:
-     image: mysql
-     environment:
-       MYSQL_DATABASE: demo
-       MYSQL_USER: test
-       MYSQL_PASSWORD: test
-       MYSQL_ROOT_PASSWORD: root
-deploy:
-  capistrano:
-    image: fdplugins/capistrano
-    when:
-      branch: deploy
-    commands:
-      - cap production deploy
+compose:
+  database:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: demo
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: root
 cache:
   mount:
     - .git
